@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/IgorSharov/thinknetica-react-isharov/issues"
   },
-  "homepage": "https://github.com/IgorSharov/thinknetica-react-isharov#readme"
+  "homepage": "https://github.com/IgorSharov/thinknetica-react-isharov#readme",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
 }
