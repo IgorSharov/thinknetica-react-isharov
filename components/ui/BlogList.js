@@ -3,16 +3,16 @@ import DOM from 'react-dom-factories';
 import _ from 'lodash';
 import BlogItem from './BlogItem';
 
-const BlogList = ({ blogItemsMocks }) => {
+const BlogList = ({ items }) => {
   return DOM.div(
     null,
     _.map(
-      blogItemsMocks,
+      items,
       (item, key) => (
         React.createElement(BlogItem, { key, text: item.text, image: item.image })
       )
     )
-  )
+  );
 };
 
 export default BlogList;

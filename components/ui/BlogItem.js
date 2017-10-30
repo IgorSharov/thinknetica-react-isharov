@@ -3,11 +3,11 @@ import DOM from 'react-dom-factories';
 import Image from './Image';
 import TextBox from './TextBox';
 
-const BlogItem = (props) => (
+const BlogItem = ({ image, text }) => (
   DOM.div(
     {},
-    React.createElement(Image, props.image),
-    React.createElement(TextBox, {text: props.text})
+    React.createElement(Image, image),
+    React.createElement(TextBox, { text: text })
   )
 );
 

@@ -38,8 +38,8 @@ class BlogPage extends React.Component {
   }
   
   render() {
-    const { blogItemsMocks } = this.state
-    return React.createElement(BlogList, { blogItemsMocks })
+    const { blogItemsMocks: items } = this.state;
+    return React.createElement(BlogList, { items });
   }
 }
 

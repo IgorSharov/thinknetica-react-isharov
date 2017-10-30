@@ -4,6 +4,6 @@ import BlogPage from './components/containers/BlogPage';
 
 const result = ReactDOMServer.renderToString(
   React.createElement(BlogPage)
-)
+);
 
 console.log(result);
