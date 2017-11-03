@@ -1,7 +1,8 @@
 import React from 'react';
 import DOM from 'react-dom-factories'; 
-import _ from 'lodash';
 import BlogItem from './BlogItem';
+
+import _ from 'lodash';
 
 const BlogList = ({ items }) => {
   return DOM.div(
@@ -9,7 +10,7 @@ const BlogList = ({ items }) => {
     _.map(
       items,
       (item, key) => (
-        React.createElement(BlogItem, { key, text: item.text, image: item.image })
+        React.createElement(BlogItem, { key, ...item })
       )
     )
   );
