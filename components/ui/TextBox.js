@@ -5,6 +5,10 @@ const TextBox = ({ text }) => (
   <span>{ text }</span>
   );
 
+TextBox.propTypes = {
+  text: PropTypes.string
+};
+
 TextBox.defaultProps = {
   text: 'Default text'
 };

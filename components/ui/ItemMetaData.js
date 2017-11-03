@@ -13,9 +13,16 @@ const ItemMetaData = ({ author, dateCreate, dateEdit, likes }) => (
     &nbsp;|&nbsp;
     { dateEdit }
     &nbsp;|&nbsp;
-    <Like likes={likes} />
+    <Like likes={ likes } />
   </div>
 );
+
+ItemMetaData.propTypes = {
+  author: PropTypes.object,
+  dateCreate: PropTypes.string,
+  dateEdit: PropTypes.string,
+  likes: PropTypes.number  
+};
 
 ItemMetaData.defaultProps = {
   author: {
@@ -24,13 +31,6 @@ ItemMetaData.defaultProps = {
   dateCreate: moment('1970-01-01').format('LL'),
   dateEdit: moment('1970-01-01').format('LL'),
   likes: 0
-};
-
-ItemMetaData.propTypes = {
-  author: PropTypes.object,
-  dateCreate: PropTypes.string,
-  dateEdit: PropTypes.string,
-  likes: PropTypes.number  
 };
 
 export default ItemMetaData;

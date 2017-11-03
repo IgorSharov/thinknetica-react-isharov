@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 const { bind } = _;
@@ -28,5 +29,13 @@ class Like extends React.Component {
     )
   }
 }
+
+Like.propTypes = {
+  likes: PropTypes.number
+};
+
+Like.defaultProps = {
+  likes: 0
+};
 
 export default Like;
