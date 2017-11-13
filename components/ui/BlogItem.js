@@ -8,22 +8,25 @@ import ItemMetaData from './ItemMetaData';
 const moment = require('moment');
 moment.locale('ru');
 
-const BlogItem = ({ image, text, metaData }) => (
+const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
   DOM.div(
     {},
     React.createElement(Image, image),
     React.createElement(TextBox, { text }),
-    React.createElement(ItemMetaData, metaData)
+    React.createElement(ItemMetaData, { ...metaData, onLikeClick: () => onLikeClick(id) } )
   )
 );
 
 BlogItem.propTypes = {
+  id: PropTypes.number,
   image: PropTypes.object,
   text: PropTypes.string,
-  metaData: PropTypes.object
+  metaData: PropTypes.object,
+  onLikeClick: PropTypes.func
 };
 
 BlogItem.defaultProps = {
+  id: -1,
   image: {
     url: 'https://image.flaticon.com/icons/png/512/1/1533.png',
     width: '35px',
@@ -38,7 +41,8 @@ BlogItem.defaultProps = {
     dateCreate: moment('1970-01-01').format('LL'),
     dateEdit: moment('1970-01-01').format('LL'),
     likes: 0
-  }
+  },
+  onLikeClick: () => (null)
 };
 
 export default BlogItem;

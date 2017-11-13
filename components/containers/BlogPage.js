@@ -6,6 +6,7 @@ moment.locale('ru');
 
 const blogItemsMocks = [
   {
+    id: 1,
     image: {
       url: 'https://image.flaticon.com/icons/png/512/1/1560.png', 
       width: '35px',
@@ -23,6 +24,7 @@ const blogItemsMocks = [
     } 
   },
   {
+    id: 2,
     image: {
       url: 'https://image.flaticon.com/icons/png/512/1/1561.png', 
       width: '35px',
@@ -48,9 +50,16 @@ class BlogPage extends React.Component {
     this.state = { items: blogItemsMocks };
   }
   
+  like(id) {
+    let newItems = JSON.parse(JSON.stringify(this.state.items));
+    let item = newItems.filter((itm) => (itm.id === id))[0];
+    item.metaData.likes++;
+    this.setState({ items: newItems });
+  }
+  
   render() {
     const { items } = this.state;
-    return React.createElement(BlogList, { items });
+    return React.createElement(BlogList, { items, onLikeClick: (id) => this.like(id) });
   }
 }
 

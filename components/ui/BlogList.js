@@ -5,24 +5,26 @@ import BlogItem from './BlogItem';
 
 import _ from 'lodash';
 
-const BlogList = ({ items }) => {
+const BlogList = ({ items, onLikeClick }) => {
   return DOM.div(
     null,
     _.map(
       items,
-      (item, key) => (
-        React.createElement(BlogItem, { key, ...item })
+      (item) => (
+        React.createElement(BlogItem, { key: item.id ? item.id : -1, ...item, onLikeClick })
       )
     )
   );
 };
 
 BlogList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
+  items: PropTypes.arrayOf(PropTypes.object),
+  onLikeClick: PropTypes.func
 };
 
 BlogList.defaultProps = {
-  items: [{}, {}, {}]
+  items: [{}, {}, {}],
+  onLikeClick: () => (null)
 };
 
 export default BlogList;
