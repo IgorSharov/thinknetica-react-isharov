@@ -12,7 +12,7 @@ const BlogItem = ({ image, text, metaData }) => (
   DOM.div(
     {},
     React.createElement(Image, image),
-    React.createElement(TextBox, { text: text }),
+    React.createElement(TextBox, { text }),
     React.createElement(ItemMetaData, metaData)
   )
 );
