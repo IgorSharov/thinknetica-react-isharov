@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogList from '../ui/BlogList';
+import PieChart from '../ui/PieChart';
 
 const moment = require('moment');
 moment.locale('ru');
@@ -47,19 +48,31 @@ const blogItemsMocks = [
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
+    this.like = this.like.bind(this);
     this.state = { items: blogItemsMocks };
   }
   
   like(id) {
-    let newItems = JSON.parse(JSON.stringify(this.state.items));
-    let item = newItems.filter((itm) => (itm.id === id))[0];
-    item.metaData.likes++;
-    this.setState({ items: newItems });
+    this.setState((prevState) => {
+      let newItems = JSON.parse(JSON.stringify(prevState.items));
+      let item = newItems.filter((itm) => (itm.id === id))[0];
+      item && item.metaData.likes++;
+      return { items: newItems };
+    });       
   }
   
   render() {
     const { items } = this.state;
-    return React.createElement(BlogList, { items, onLikeClick: (id) => this.like(id) });
+    return DOM.div (
+      {},
+      React.createElement(BlogList, { items, onLikeClick: (id) => this.like(id) }),
+      React.createElement(PieChart, {
+        columns:
+          _.map(items,
+                (item) => (('id' in item) && [item.text, item.metaData.likes])
+               )
+      })
+    );
   }
 }
 
