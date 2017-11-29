@@ -10,25 +10,23 @@ class PieChart extends React.Component {
       bindto: this.pie,
       data: { 
         columns: this.props.columns,
-        type : 'pie',
+        type : 'pie'
       }
     })
   }
   
-  render() {
-    this.chart && this.chart.load({ columns: this.props.columns });
-    return (
-      <div ref = { (c) => { this.pie = c; } } />
-    );
-  }
-
-  componentWillReceiveProps() {
-    this.chart.load({ columns: this.props.columns });
+  componentWillReceiveProps(nextProps) {
+    this.chart.load({ columns: nextProps.columns });
   }
   
   componentWillUnmount() {
-    console.log('componentWillUnmount');
     this.chart.destroy();
+  }
+  
+  render() {
+    return (
+      <div ref = { (c) => { this.pie = c; } } />
+    );
   }
 }
 
