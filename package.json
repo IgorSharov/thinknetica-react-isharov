@@ -1,0 +1,25 @@
+{
+  "name": "thinknetica-react-isharov",
+  "version": "1.0.0",
+  "description": "thinknetica-react-isharov",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorSharov/thinknetica-react-isharov.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorSharov/thinknetica-react-isharov/issues"
+  },
+  "homepage": "https://github.com/IgorSharov/thinknetica-react-isharov#readme",
+  "devDependencies": {
+    "eslint": "^4.12.1",
+    "eslint-plugin-destructuring": "^2.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}

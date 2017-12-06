@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { items as staticItems } from 'constants/static/items'
+import { items as staticItems } from 'constants/static/items';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
