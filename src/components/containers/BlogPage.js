@@ -17,8 +17,8 @@ class BlogPage extends React.Component {
   
   like(id) {
     this.setState((prevState) => {
-      let newItems = JSON.parse(JSON.stringify(prevState.items));
-      let item = newItems.filter((itm) => (itm.id === id))[0];
+      const newItems = JSON.parse(JSON.stringify(prevState.items));
+      const item = newItems.filter((itm) => (itm.id === id))[0];
       item && item.metaData.likes++;
       return { items: newItems };
     });       
@@ -32,8 +32,8 @@ class BlogPage extends React.Component {
       React.createElement(PieChart, {
         columns:
           _.map(items,
-                (item) => (('id' in item) && [item.text, item.metaData.likes])
-               )
+            (item) => (('id' in item) && [item.text, item.metaData.likes])
+          )
       })
     );
   }
