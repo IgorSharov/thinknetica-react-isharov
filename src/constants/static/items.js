@@ -38,5 +38,23 @@ export const items = [
       likes: 2
     }
   },
+  {
+    id: 3,
+    image: {
+      url: 'https://image.flaticon.com/icons/png/512/1/1562.png',
+      width: '35px',
+      height: '35px',
+      alt: 'image for blog item 3'
+    },
+    text: 'Test text 3',
+    metaData: {
+      author: {
+        name: 'User 3'
+      },
+      dateCreate: moment('2015-04-03').format('LL'),
+      dateEdit: moment('2015-04-04').format('LL'),
+      likes: 2
+    }
+  },
   {}
 ];

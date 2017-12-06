@@ -1,11 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { AppContainer } from 'react-hot-loader';
+
 import App from './App';
 
 const rootEl = document.getElementById('root');
 
 ReactDOM.render(
-  React.createElement(App),
+  React.createElement(AppContainer, {}, React.createElement(App)),
   rootEl
 );
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+
+    ReactDOM.render(
+      React.createElement(AppContainer, {}, React.createElement(NextApp)),
+      rootEl
+    );
+  });
+}

@@ -13,7 +13,9 @@ const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
     {},
     React.createElement(Image, image),
     React.createElement(TextBox, { text }),
-    React.createElement(ItemMetaData, { ...metaData, onLikeClick: () => onLikeClick(id) } )
+    React.createElement(
+      ItemMetaData,
+      { ...metaData, onLikeClick: () => onLikeClick(id) })
   )
 );
 
