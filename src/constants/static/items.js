@@ -13,7 +13,8 @@ export const items = [
     text: 'Test text 1',
     metaData: {
       author: {
-        name: 'User 1'
+        name: 'User 1',
+        country: 'ru'
       },
       dateCreate: moment('2013-02-01').format('LL'),
       dateEdit: moment('2013-02-02').format('LL'),
@@ -31,7 +32,8 @@ export const items = [
     text: 'Test text 2',
     metaData: {
       author: {
-        name: 'User 2'
+        name: 'User 2',
+        country: 'us'
       },
       dateCreate: moment('2014-03-02').format('LL'),
       dateEdit: moment('2014-03-03').format('LL'),
@@ -49,7 +51,8 @@ export const items = [
     text: 'Test text 3',
     metaData: {
       author: {
-        name: 'User 3'
+        name: 'User 3',
+        country: 'france'
       },
       dateCreate: moment('2015-04-03').format('LL'),
       dateEdit: moment('2015-04-04').format('LL'),

@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Like from './Like';
 
+import { Flag } from 'semantic-ui-react';
+
 const moment = require('moment');
 moment.locale('ru');
 
 const ItemMetaData = ({ author, dateCreate, dateEdit, likes, onLikeClick }) => (
   <div>
+    <Flag name= { author.country } />
     { author.name }
     &nbsp;|&nbsp;
     { dateCreate }
