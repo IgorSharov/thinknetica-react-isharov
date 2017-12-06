@@ -5,19 +5,19 @@ import BlogItem from './BlogItem';
 
 import _ from 'lodash';
 
-const globalSeq = { mockId: -1 }
+const globalSeq = { mockId: -1 };
 
-const BlogList = ({ items, onLikeClick }) => {
-  return DOM.div(
-    null,
-    _.map(
-      items,
-      (item) => (
-        React.createElement(BlogItem, { key: item.id ? item.id : globalSeq.mockId--, ...item, onLikeClick })
-      )
+const BlogList = ({ items, onLikeClick }) => DOM.div(
+  null,
+  _.map(
+    items,
+    (item) => (
+      React.createElement(
+        BlogItem, 
+        { key: item.id ? item.id : globalSeq.mockId--, ...item, onLikeClick })
     )
-  );
-};
+  )
+);
 
 BlogList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),

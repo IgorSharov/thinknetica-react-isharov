@@ -1,9 +1,12 @@
 import React from 'react';
+import DOM from 'react-dom-factories';
 
 import { items as staticItems } from 'constants/static/items';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
+
+import _ from 'lodash';
 
 const moment = require('moment');
 moment.locale('ru');
@@ -28,7 +31,10 @@ class BlogPage extends React.Component {
     const { items } = this.state;
     return DOM.div (
       {},
-      React.createElement(BlogList, { items, onLikeClick: (id) => this.like(id) }),
+      React.createElement(BlogList, { 
+        items, 
+        onLikeClick: (id) => this.like(id) 
+      }),
       React.createElement(PieChart, {
         columns:
           _.map(items,
