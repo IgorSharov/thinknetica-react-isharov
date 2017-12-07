@@ -38,7 +38,7 @@ class BlogPage extends React.Component {
       React.createElement(PieChart, {
         columns:
           _.map(items,
-            (item) => (('id' in item) && [item.text, item.metaData.likes])
+            (item) => ('id' in item) ? [item.text, item.metaData.likes] : []
           )
       })
     );

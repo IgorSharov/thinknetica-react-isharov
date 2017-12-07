@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Image = ({ url, width, height, alt }) => (
   <img src={ url } width={ width } height={ height } alt={ alt }></img>
-  );
+);
 
 Image.propTypes = {
   url: PropTypes.string,

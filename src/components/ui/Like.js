@@ -11,7 +11,7 @@ const Like = (props) => (
       &#10084;
     </a>
   </span>
-)
+);
 
 Like.propTypes = {
   likes: PropTypes.number,
