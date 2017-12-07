@@ -1,15 +1,17 @@
 import React from 'react';
-import DOM from 'react-dom-factories'; 
 import PropTypes from 'prop-types';
 import Image from './Image';
 import TextBox from './TextBox';
 import ItemMetaData from './ItemMetaData';
 
+import { Segment } from 'semantic-ui-react';
+
 const moment = require('moment');
 moment.locale('ru');
 
 const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
-  DOM.div(
+  React.createElement(
+    Segment,
     {},
     React.createElement(Image, image),
     React.createElement(TextBox, { text }),
