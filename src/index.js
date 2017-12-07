@@ -7,20 +7,16 @@ import App from './App';
 
 import '../semantic/dist/semantic.min.css';
 
-const rootEl = document.getElementById('root');
-
-ReactDOM.render(
-  React.createElement(AppContainer, {}, React.createElement(App)),
-  rootEl
+const render = (app) => ReactDOM.render(
+  React.createElement(AppContainer, {}, React.createElement(app)),
+  document.getElementById('root')
 );
+
+render(App);
 
 if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default;
-
-    ReactDOM.render(
-      React.createElement(AppContainer, {}, React.createElement(NextApp)),
-      rootEl
-    );
+    render(NextApp);
   });
 }
