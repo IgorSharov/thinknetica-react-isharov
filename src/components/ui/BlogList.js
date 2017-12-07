@@ -3,13 +3,13 @@ import DOM from 'react-dom-factories';
 import PropTypes from 'prop-types';
 import BlogItem from './BlogItem';
 
-import _ from 'lodash';
+import { map } from 'lodash';
 
 const globalSeq = { mockId: -1 };
 
 const BlogList = ({ items, onLikeClick }) => DOM.div(
   null,
-  _.map(
+  map(
     items,
     (item) => (
       React.createElement(

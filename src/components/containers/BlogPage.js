@@ -6,7 +6,7 @@ import { items as staticItems } from 'constants/static/items';
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
 
-import _ from 'lodash';
+import { map } from 'lodash';
 
 const moment = require('moment');
 moment.locale('ru');
@@ -37,7 +37,7 @@ class BlogPage extends React.Component {
       }),
       React.createElement(PieChart, {
         columns:
-          _.map(items,
+          map(items,
             (item) => ('id' in item) ? [item.text, item.metaData.likes] : []
           )
       })
