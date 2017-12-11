@@ -1,12 +1,25 @@
 import React from 'react';
 
+import { Router } from 'react-router';
+import createBrowserHistory from 'history/createBrowserHistory';
+
+import { map } from 'lodash';
+
 import MainLayout from 'components/layouts/MainLayout';
-import BlogPage from 'components/containers/BlogPage';
+import routes, { RouteWithSubRoutes } from 'routes';
+
+const history = createBrowserHistory();
 
 const App = () => (
-  <MainLayout>
-    <BlogPage />
-  </MainLayout>
+  <Router history={history}>
+    <MainLayout>
+      {map(
+        routes,
+        (route, i) => (
+          <RouteWithSubRoutes key={i} {...route}/>
+        ))}
+    </MainLayout>
+  </Router>
 );
 
 export default App;
