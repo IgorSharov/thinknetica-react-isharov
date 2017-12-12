@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Image from './Image';
 import TextBox from './TextBox';
 import ItemMetaData from './ItemMetaData';
+import Link from './Link';
 
 import { Segment } from 'semantic-ui-react';
 
@@ -14,7 +15,7 @@ const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
     Segment,
     {},
     React.createElement(Image, image),
-    React.createElement(TextBox, { text }),
+    <Link to={`/posts/${id}`}> <TextBox text={text} /> </Link>,
     React.createElement(
       ItemMetaData,
       { ...metaData, onLikeClick: () => onLikeClick(id) })
