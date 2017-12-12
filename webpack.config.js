@@ -9,6 +9,8 @@ module.exports = {
     './src/index.js'  
   ],
 
+  devtool: 'inline-source-map',
+
   output: {
     path: path.join(process.cwd(), 'dist'),
     publicPath: '/assets/',
