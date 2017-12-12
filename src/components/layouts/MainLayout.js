@@ -19,7 +19,7 @@ export default MainLayout;
 
 const Logo = () => (
   <Segment>
-    <Header>React blog</Header>
+    <Header>-=Reac† b1og=-</Header>
   </Segment>
 );
 

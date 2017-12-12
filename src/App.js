@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Router } from 'react-router';
+import { Router, Switch } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import { map } from 'lodash';
@@ -13,11 +13,13 @@ const history = createBrowserHistory();
 const App = () => (
   <Router history={history}>
     <MainLayout>
-      {map(
-        routes,
-        (route, i) => (
-          <RouteWithSubRoutes key={i} {...route}/>
-        ))}
+      <Switch>
+        {map(
+          routes,
+          (route, i) => (
+            <RouteWithSubRoutes key={i} {...route}/>
+          ))}
+      </Switch>
     </MainLayout>
   </Router>
 );

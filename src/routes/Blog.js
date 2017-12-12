@@ -2,7 +2,8 @@ import BlogPage from 'components/containers/BlogPage';
 
 const Index = {
   path: '/',
-  component: BlogPage
+  exact: true,
+  component: BlogPage  
 };
 
 export default [
