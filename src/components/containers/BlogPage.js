@@ -1,12 +1,13 @@
 import React from 'react';
-import DOM from 'react-dom-factories';
+
+import { Item } from 'semantic-ui-react';
+
+import { map } from 'lodash';
 
 import { items as staticItems } from 'constants/static/items';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
-
-import { map } from 'lodash';
 
 const moment = require('moment');
 moment.locale('ru');
@@ -29,7 +30,8 @@ class BlogPage extends React.Component {
   
   render() {
     const { items } = this.state;
-    return DOM.div (
+    return React.createElement(
+      Item.Group,
       {},
       React.createElement(BlogList, { 
         items, 
