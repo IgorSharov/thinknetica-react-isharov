@@ -16,7 +16,15 @@ const ItemMetaData = ({ author, dateCreate, dateEdit, likes, onLikeClick }) => (
     &nbsp;|&nbsp;
     { dateEdit }
     &nbsp;|&nbsp;
-    <Like likes = { likes } onClick = { onLikeClick } />
+    <Like 
+      likes = { likes } 
+      onClick = { (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        onLikeClick();
+      }}
+    />
   </div>
 );
 
