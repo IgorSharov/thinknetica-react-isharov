@@ -4,7 +4,7 @@ import { Item } from 'semantic-ui-react';
 
 import { map } from 'lodash';
 
-import { items as staticItems } from 'constants/static/items';
+import request from 'superagent';
 
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
@@ -16,7 +16,19 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.like = this.like.bind(this);
-    this.state = { items: staticItems };
+    this.state = { items: [] };
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001',
+      {},
+      (err, res) => this.setState({ items: res.body })
+    );
   }
   
   like(id) {
