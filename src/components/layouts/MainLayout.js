@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Segment, Header, Container } from 'semantic-ui-react';
 
 import Link from '../ui/Link';
+import { rootPath } from 'helpers/routes';
 
 const MainLayout = ({ children }) => (
   <Container>
@@ -22,7 +23,7 @@ export default MainLayout;
 const Logo = () => (
   <Segment>
     <Header>
-      <Link to='/'>-=Reac† b1og=-</Link>
+      <Link to={rootPath()}>-=Reac† b1og=-</Link>
     </Header>
   </Segment>
 );

@@ -1,7 +1,8 @@
 import Post from 'components/containers/Post';
+import { postsPath } from 'helpers/routes';
 
 const Index = {
-  path: '/posts/:id',
+  path: postsPath(),
   component: Post
 };
 

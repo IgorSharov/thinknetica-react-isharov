@@ -1,7 +1,8 @@
 import BlogPage from 'components/containers/BlogPage';
+import { rootPath } from 'helpers/routes';
 
 const Index = {
-  path: '/',
+  path: rootPath(),
   exact: true,
   component: BlogPage  
 };
