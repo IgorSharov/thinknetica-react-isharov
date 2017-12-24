@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Item } from 'semantic-ui-react';
+import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
 import request from 'superagent';
 
@@ -30,7 +30,9 @@ class Post extends React.Component {
     const { post } = this.state;
     return (
       <Item.Group>
-        <BlogItem { ...post } />
+        { post
+          ? <BlogItem { ...post } />
+          : <Dimmer active> <Loader>Loading...</Loader> </Dimmer> }
       </Item.Group>
     );
   }

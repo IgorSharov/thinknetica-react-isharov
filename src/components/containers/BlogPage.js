@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Item } from 'semantic-ui-react';
+import { Item, Dimmer, Loader } from 'semantic-ui-react';
 
 import { map } from 'lodash';
 
@@ -16,7 +16,7 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.like = this.like.bind(this);
-    this.state = { items: [] };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -45,16 +45,22 @@ class BlogPage extends React.Component {
     return React.createElement(
       Item.Group,
       {},
-      React.createElement(BlogList, { 
-        items, 
-        onLikeClick: (id) => this.like(id) 
-      }),
-      React.createElement(PieChart, {
-        columns:
-          map(items,
-            (item) => ('id' in item) ? [item.text, item.metaData.likes] : []
-          )
-      })
+      items == null
+        ? React.createElement(Dimmer,
+          { active: true },
+          React.createElement(Loader, {}, 'Loading...'))
+        : 
+        [
+          React.createElement(BlogList,
+            { key: 0, items, onLikeClick: (id) => this.like(id) }),
+          React.createElement(PieChart,
+            { key: 1,
+              columns: map(items,
+                (item) => ('id' in item)
+                  ? [item.text, item.metaData.likes]
+                  : [])
+            })
+        ]
     );
   }
 }
