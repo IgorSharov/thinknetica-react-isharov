@@ -8,18 +8,23 @@ import MainLayout from 'components/layouts/MainLayout';
 import routes, { RouteWithSubRoutes } from 'routes';
 import history from 'helpers/history';
 
+import { Provider } from 'react-redux';
+import store from 'store';
+
 const App = () => (
-  <Router history={history}>
-    <MainLayout>
-      <Switch>
-        {map(
-          routes,
-          (route, i) => (
-            <RouteWithSubRoutes key={i} {...route}/>
-          ))}
-      </Switch>
-    </MainLayout>
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <MainLayout>
+        <Switch>
+          {map(
+            routes,
+            (route, i) => (
+              <RouteWithSubRoutes key={i} {...route}/>
+            ))}
+        </Switch>
+      </MainLayout>
+    </Router>
+  </Provider>
 );
 
 export default App;
