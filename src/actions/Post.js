@@ -1,6 +1,7 @@
 import request from 'superagent';
 
 import API_ROOT from 'constants/API';
+import { postsPath } from 'helpers/routes';
 import * as types from 'constants/actionTypes/PostActionTypes';
 
 const requestPost = (id) => ({
@@ -21,7 +22,7 @@ export function fetchPost(id) {
   return (dispatch) => {
     dispatch(requestPost());
     return request
-      .get(`${API_ROOT}/${id}`)
+      .get(`${API_ROOT}${postsPath(id)}`)
       .end((err, response) => {
         err ? dispatch(errorPost()) : dispatch(recievePost(response.body));
       });
