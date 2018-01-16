@@ -1,11 +1,11 @@
-import Post from 'components/containers/Post';
+import PostContainer from 'components/hoc/PostContainer';
 import { postsPath } from 'helpers/routes';
 
 import { fetchPost } from 'actions/Post';
 
 const Index = {
   path: postsPath(),
-  component: Post,
+  component: PostContainer,
   prepareData: (store, query, params) => {
     store.dispatch(fetchPost(params.id));
   }

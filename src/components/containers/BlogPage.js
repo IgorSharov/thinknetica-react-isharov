@@ -1,34 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Item, Dimmer, Loader } from 'semantic-ui-react';
+import { Item } from 'semantic-ui-react';
 
 import { map } from 'lodash';
 
-import request from 'superagent';
-
 import BlogList from 'components/ui/BlogList';
 import PieChart from 'components/ui/PieChart';
-
-const moment = require('moment');
-moment.locale('ru');
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.like = this.like.bind(this);
-    this.state = {};
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      'http://localhost:3001',
-      {},
-      (err, res) => this.setState({ items: res.body })
-    );
   }
   
   like(id) {
@@ -41,28 +24,25 @@ class BlogPage extends React.Component {
   }
   
   render() {
-    const { items } = this.state;
+    const { items } = this.props;
     return React.createElement(
       Item.Group,
       {},
-      items == null
-        ? React.createElement(Dimmer,
-          { active: true },
-          React.createElement(Loader, {}, 'Loading...'))
-        : 
-        [
-          React.createElement(BlogList,
-            { key: 0, items, onLikeClick: (id) => this.like(id) }),
-          React.createElement(PieChart,
-            { key: 1,
-              columns: map(items,
-                (item) => ('id' in item)
-                  ? [item.text, item.metaData.likes]
-                  : [])
-            })
-        ]
+      React.createElement(BlogList,
+        { key: 0, items, onLikeClick: (id) => this.like(id) }),
+      React.createElement(PieChart,
+        { key: 1,
+          columns: map(items,
+            (item) => ('id' in item)
+              ? [item.text, item.metaData.likes]
+              : [])
+        })
     );
   }
 }
+
+BlogPage.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default BlogPage;
