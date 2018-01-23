@@ -1,4 +1,4 @@
-import PostsContainer from 'components/hoc/PostsContainer';
+import BlogPageHOC from 'components/hoc/BlogPageHOC';
 import { rootPath } from 'helpers/routes';
 
 import { fetchPosts } from 'actions/Posts';
@@ -6,7 +6,7 @@ import { fetchPosts } from 'actions/Posts';
 const Index = {
   path: rootPath(),
   exact: true,
-  component: PostsContainer,
+  component: BlogPageHOC,
   prepareData: (store) => {
     store.dispatch(fetchPosts());
   }

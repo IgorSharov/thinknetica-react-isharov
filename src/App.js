@@ -19,8 +19,8 @@ function historyCallback (location) {
     return match;
   });
 }
-historyCallback(window.location);
 
+historyCallback(window.location);
 history.listen(historyCallback);
 
 const App = () => (

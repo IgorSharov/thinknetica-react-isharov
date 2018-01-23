@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Like = (props) => (
+const Like = ({ likes, id, addLike }) => (
   <span>
-    { props.likes }
+    { likes }
     <a 
       href='#' style = {{ textDecoration: 'none' }}
-      onClick = { props.onClick }
+      onClick={
+        (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          e.nativeEvent.stopImmediatePropagation();
+          addLike(id);
+        }
+      }
     >
       &#10084;
     </a>
@@ -15,12 +22,14 @@ const Like = (props) => (
 
 Like.propTypes = {
   likes: PropTypes.number,
-  onClick: PropTypes.func
+  id: PropTypes.number,
+  addLike: PropTypes.func
 };
 
 Like.defaultProps = {
   likes: 0,
-  onClick: () => (null)
+  id: -1,
+  addLike: () => (null)
 };
 
 export default Like;

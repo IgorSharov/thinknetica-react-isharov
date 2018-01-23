@@ -10,7 +10,7 @@ import { Segment } from 'semantic-ui-react';
 const moment = require('moment');
 moment.locale('ru');
 
-const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
+const BlogItem = ({ id, image, text, metaData }) => (
   React.createElement(
     Segment,
     {},
@@ -18,7 +18,7 @@ const BlogItem = ({ id, image, text, metaData, onLikeClick }) => (
     <Link to={`/posts/${id}`}> <TextBox text={text} /> </Link>,
     React.createElement(
       ItemMetaData,
-      { ...metaData, onLikeClick: () => onLikeClick(id) })
+      { ...metaData, id })
   )
 );
 
@@ -26,8 +26,7 @@ BlogItem.propTypes = {
   id: PropTypes.number,
   image: PropTypes.object,
   text: PropTypes.string,
-  metaData: PropTypes.object,
-  onLikeClick: PropTypes.func
+  metaData: PropTypes.object
 };
 
 BlogItem.defaultProps = {
@@ -46,8 +45,7 @@ BlogItem.defaultProps = {
     dateCreate: moment('1970-01-01').format('LL'),
     dateEdit: moment('1970-01-01').format('LL'),
     likes: 0
-  },
-  onLikeClick: () => (null)
+  }
 };
 
 export default BlogItem;
