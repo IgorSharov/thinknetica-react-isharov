@@ -6,7 +6,7 @@ import { fetchPost } from 'actions/Post';
 const Index = {
   path: postsPath(),
   component: PostContainer,
-  prepareData: (store, query, params) => {
+  prepareData: (store, params) => {
     store.dispatch(fetchPost(params.id));
   }
 };
