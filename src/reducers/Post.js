@@ -1,5 +1,6 @@
 import { assign} from 'lodash';
-import * as types from 'constants/actionTypes/PostActionTypes';
+import * as postTypes from 'constants/actionTypes/PostActionTypes';
+import * as likesTypes from 'constants/actionTypes/LikesActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -7,14 +8,24 @@ const initialState = {
   entry: null
 };
 
+function addLikeToPost(state) {
+  const newEntry = assign({}, state.entry);
+  newEntry.metaData.likes++;
+  return assign({}, initialState, { entry: newEntry });
+}
+
 export default function(state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_POST_REQUEST:
+    case postTypes.FETCH_POST_REQUEST:
       return assign({}, initialState, { isFetching: true });
-    case types.FETCH_POST_ERROR:
+    case postTypes.FETCH_POST_ERROR:
       return assign({}, initialState, { error: true });
-    case types.FETCH_POST_SUCCEESS:
+    case postTypes.FETCH_POST_SUCCEESS:
       return assign({}, initialState, { entry: action.response });
+    case likesTypes.ADD_LIKE:
+      return state.entry && state.entry.id === action.id 
+        ? addLikeToPost(state) 
+        : state;
     default: return state;
   }
 }
