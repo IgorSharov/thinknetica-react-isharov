@@ -14,15 +14,13 @@ const moment = require('moment');
 moment.locale('ru');
 
 const BlogItem = ({ id, image, text, metaData }) => (
-  React.createElement(
-    Segment,
-    {},
-    React.createElement(Image, image),
-    <Link to={postsPath(id)}> <TextBox text={text} /> </Link>,
-    React.createElement(
-      ItemMetaData,
-      { ...metaData, id })
-  )
+  <Segment>
+    <Image {...image} />
+    <Link to={postsPath(id)}>
+      <TextBox text={text} />
+    </Link>
+    <ItemMetaData {...{...metaData, id}} />
+  </Segment>
 );
 
 BlogItem.propTypes = {
