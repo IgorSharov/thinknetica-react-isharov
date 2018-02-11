@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { Segment } from 'semantic-ui-react';
+
 import Image from './Image';
 import TextBox from './TextBox';
 import ItemMetaData from './ItemMetaData';
 import Link from './Link';
 
-import { Segment } from 'semantic-ui-react';
+import { postsPath } from 'helpers/routes';
 
 const moment = require('moment');
 moment.locale('ru');
@@ -15,7 +18,7 @@ const BlogItem = ({ id, image, text, metaData }) => (
     Segment,
     {},
     React.createElement(Image, image),
-    <Link to={`/posts/${id}`}> <TextBox text={text} /> </Link>,
+    <Link to={postsPath(id)}> <TextBox text={text} /> </Link>,
     React.createElement(
       ItemMetaData,
       { ...metaData, id })
