@@ -1,27 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Item } from 'semantic-ui-react';
 
-import { map } from 'lodash';
+import BlogListHOC from 'components/hoc/BlogListHOC';
+import PieChartHOC from 'components/hoc/PieChartHOC';
 
-import BlogList from 'components/ui/BlogList';
-import PieChart from 'components/ui/PieChart';
-
-const BlogPage = ({ items }) => (
+const BlogPage = () => (
   <Item.Group>
-    <BlogList items={items} />
-    <PieChart 
-      columns = {map(items,
-        (item) => ('id' in item)
-          ? [item.text, item.metaData.likes]
-          : [])}
-    />
+    <BlogListHOC />
+    <PieChartHOC />
   </Item.Group>
 );
-
-BlogPage.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
-};
 
 export default BlogPage;
